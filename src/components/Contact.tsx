@@ -46,10 +46,10 @@ export default function Contact() {
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="glass-card p-8 rounded-[2.5rem] border-white/10 shadow-2xl relative"
+                    className="glass-card p-0 md:p-8 rounded-[2.5rem] border-white/10 shadow-2xl relative"
                 >
                     <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <input type="text" placeholder="Name" className="bg-white/5 border border-white/10 px-6 py-4 rounded-xl text-sm outline-none focus:border-red-600 transition-colors" />
                             <input type="email" placeholder="Email" className="bg-white/5 border border-white/10 px-6 py-4 rounded-xl text-sm outline-none focus:border-red-600 transition-colors" />
                         </div>
