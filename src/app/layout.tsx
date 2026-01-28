@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Toaster } from "sonner";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -22,6 +23,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://viralift.vercel.app'),
+
   title: {
     default: "ViraLift AI | Rank #1 on YouTube, Instagram & Facebook",
     template: "%s | ViraLift AI"
@@ -31,11 +34,18 @@ export const metadata: Metadata = {
   authors: [{ name: "ViraLift Team" }],
   creator: "ViraLift AI",
 
+  // 2. This forces the Favicon/Logo to show in Search Results
+  icons: {
+    icon: '/viralift.png',
+    shortcut: '/viralift.png',
+    apple: '/viralift.png',
+  },
+
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://viralift.vercel.app",
-    siteName: "ViraLift AI",
+    siteName: "ViraLift", // Helps fix the "Vercel" name issue
     title: "ViraLift AI | Dominate the Algorithm",
     description: "Generate viral assets for YouTube, Instagram, and Facebook with our custom AI engine.",
     images: [
@@ -100,8 +110,34 @@ export default function RootLayout({
         </main>
         <Footer />
         <Toaster theme="dark" position="top-center" richColors />
+
+        <Script id="json-ld-branding" strategy="beforeInteractive">
+          {`
+            [
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "ViraLift",
+                "alternateName": ["ViraLift AI", "ViraLift App"],
+                "url": "https://viralift.vercel.app/"
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "ViraLift",
+                "url": "https://viralift.vercel.app",
+                "logo": "https://viralift.vercel.app/viralift.png",
+                "sameAs": [
+                  "https://github.com/viralift",
+                  "https://twitter.com/viralift"
+                ]
+              }
+            ]
+          `}
+        </Script>
+
+        <GoogleAnalytics gaId="G-7F75RE9HR7" />
       </body>
-      <GoogleAnalytics gaId="G-7F75RE9HR7" />
     </html>
   );
 }
