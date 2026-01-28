@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Toaster } from "sonner";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -100,6 +101,7 @@ export default function RootLayout({
         <Footer />
         <Toaster theme="dark" position="top-center" richColors />
       </body>
+      <GoogleAnalytics gaId="G-7F75RE9HR7" />
     </html>
   );
 }
