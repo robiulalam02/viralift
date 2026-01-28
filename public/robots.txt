@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Direct Google to your sitemap
+Sitemap: https://viralift.vercel.app/sitemap.xml
